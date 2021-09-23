@@ -1,10 +1,19 @@
 // CRUD create read update delete
 
-const mongodb = require("mongodb");
-const MongoClient = mongodb.MongoClient;
+// const mongodb = require("mongodb");
+// const MongoClient = mongodb.MongoClient;
+// const ObjectID = mongodb.ObjectID;
+
+const { MongoClient, ObjectID } = require("mongodb");
 
 const connectionURL = "mongodb://127.0.0.1:27017";
 const databaseName = "task-manager";
+
+const id = new ObjectID();
+console.log("id: ", id);
+console.log("id.id: ", id.id.length);
+console.log("id.toHexString: ", id.toHexString().length);
+console.log("time stamp: ", id.getTimestamp());
 
 MongoClient.connect(
   connectionURL,
@@ -18,8 +27,8 @@ MongoClient.connect(
 
     // db.collection("users").insertOne(
     //   {
-    //     name: "Gi",
-    //     age: 31,
+    //     name: "Zari",
+    //     age: 34,
     //   },
     //   (error, result) => {
     //     if (error) {
@@ -48,27 +57,28 @@ MongoClient.connect(
     //     console.log(result.ops);
     //   }
     // );
-    db.collection("tasks").insertMany(
-      [
-        {
-          description: "Read the book",
-          completed: true,
-        },
-        {
-          description: "Learn node.js",
-          completed: true,
-        },
-        {
-          description: "clean the house",
-          completed: false,
-        },
-      ],
-      (error, result) => {
-        if (error) {
-          return console.log("Unable to insert documents!");
-        }
-        console.log(result.ops);
-      }
-    );
+
+    // db.collection("tasks").insertMany(
+    //   [
+    //     {
+    //       description: "Read the book",
+    //       completed: true,
+    //     },
+    //     {
+    //       description: "Learn node.js",
+    //       completed: true,
+    //     },
+    //     {
+    //       description: "clean the house",
+    //       completed: false,
+    //     },
+    //   ],
+    //   (error, result) => {
+    //     if (error) {
+    //       return console.log("Unable to insert documents!");
+    //     }
+    //     console.log(result.ops);
+    //   }
+    // );
   }
 );
