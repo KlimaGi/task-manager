@@ -75,18 +75,40 @@ MongoClient.connect(
     //     console.log(chalk.red("error: "), error);
     //   });
 
+    // db.collection("tasks")
+    //   .updateMany(
+    //     { completed: false },
+    //     {
+    //       $set: { completed: true },
+    //     }
+    //   )
+    //   .then((result) => {
+    //     console.log(chalk.magenta("result: "), result.modifiedCount);
+    //   })
+    //   .catch((error) => {
+    //     console.log(chalk.red("error: "), error);
+    //   });
+
+    // db.collection("users")
+    //   .deleteMany({
+    //     age: 31,
+    //   })
+    //   .then((result) => {
+    //     console.log("result: ", result);
+    //   })
+    //   .catch((error) => {
+    //     console.log("error: ", error);
+    //   });
+
     db.collection("tasks")
-      .updateMany(
-        { completed: false },
-        {
-          $set: { completed: true },
-        }
-      )
+      .deleteOne({
+        description: "clean the house",
+      })
       .then((result) => {
-        console.log(chalk.magenta("result: "), result.modifiedCount);
+        console.log("result: ", result);
       })
       .catch((error) => {
-        console.log(chalk.red("error: "), error);
+        console.log("error: ", error);
       });
   }
 );
