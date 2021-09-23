@@ -36,25 +36,57 @@ MongoClient.connect(
     //     console.log("users count: ", count);
     //   });
 
-    db.collection("tasks").findOne(
-      {
-        _id: new ObjectID("614c765c5981414cc84d074d"),
-      },
-      (error, task) => {
-        if (error) {
-          console.log("Unable ti fetch");
-        }
-        console.log(chalk.magenta("last task: "), task);
-      }
-    );
+    // db.collection("tasks").findOne(
+    //   {
+    //     _id: new ObjectID("614c765c5981414cc84d074d"),
+    //   },
+    //   (error, task) => {
+    //     if (error) {
+    //       console.log("Unable ti fetch");
+    //     }
+    //     console.log(chalk.magenta("last task: "), task);
+    //   }
+    // );
+
+    // db.collection("tasks")
+    //   .find({ completed: false })
+    //   .toArray((error, tasks) => {
+    //     if (error) {
+    //       console.log("Unable to fetch");
+    //     }
+    //     console.log(chalk.magenta("task uncompleted: "), tasks);
+    //   });
+
+    // db.collection("users")
+    //   .updateOne(
+    //     {
+    //       _id: new ObjectID("614b7f477159d8187c0667df"),
+    //     },
+    //     {
+    //       $inc: {
+    //         age: 1,
+    //       },
+    //     }
+    //   )
+    //   .then((result) => {
+    //     console.log(chalk.magenta("result: "), result);
+    //   })
+    //   .catch((error) => {
+    //     console.log(chalk.red("error: "), error);
+    //   });
 
     db.collection("tasks")
-      .find({ completed: false })
-      .toArray((error, tasks) => {
-        if (error) {
-          console.log("Unable to fetch");
+      .updateMany(
+        { completed: false },
+        {
+          $set: { completed: true },
         }
-        console.log(chalk.magenta("task uncompleted: "), tasks);
+      )
+      .then((result) => {
+        console.log(chalk.magenta("result: "), result.modifiedCount);
+      })
+      .catch((error) => {
+        console.log(chalk.red("error: "), error);
       });
   }
 );
