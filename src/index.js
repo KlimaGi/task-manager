@@ -26,17 +26,19 @@ app.listen(port, () => {
   console.log(`Server is up on port ${port}`);
 });
 
-const Task = require("./models/task");
-const User = require("./models/user");
+// const Task = require("./models/task");
+// const User = require("./models/user");
 
-const main = async () => {
-  // const task = await Task.findById("61508efbbd03685248c807dd");
-  // await task.populate("owner").execPopulate();
-  // console.log(task.owner);
+// const main = async () => {
+//   //--find owner by task id
+//   // const task = await Task.findById("6152e3535db6b81e987198f8");
+//   // await task.populate("owner").execPopulate();
+//   // console.log(task.owner);
 
-  const user = await User.findById("61508d48deeaaf0834c8e37a");
-  await user.populate("tasks").execPopulate();
-  console.log(user.tasks);
-};
+//   //--find tasks by user id
+//   const user = await User.findById("6152e1b55db6b81e987198f3");
+//   await user.populate("tasks").execPopulate();
+//   console.log(user.tasks);
+// };
 
-main();
+// main();
